@@ -4,11 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Resilientes MC Guanajuato | Real de Catorce 2026</title>
+<title>RESILIENTES MC GUANAJUATO | REAL DE CATORCE</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+--gold:#d4af37;
+--blue:#3aa0ff;
+--dark:#050505;
+}
 
 *{
 margin:0;
@@ -17,118 +23,236 @@ box-sizing:border-box;
 }
 
 body{
-font-family:'Cinzel',serif;
 background:#000;
 color:white;
 overflow-x:hidden;
+font-family:Montserrat,sans-serif;
 }
 
 .hero{
-min-height:100vh;
+
+height:100vh;
+position:relative;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 text-align:center;
-padding:20px;
+overflow:hidden;
 
 background:
-linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.85)),
-url('https://images.unsplash.com/photo-1519583272095-6433daf26b6e?q=80&w=2070&auto=format&fit=crop');
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),
+url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2000&auto=format&fit=crop');
 
 background-size:cover;
 background-position:center;
-background-attachment:fixed;
 }
 
-.container{
-max-width:1200px;
+.hero::before{
+
+content:'';
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(circle at center,
+rgba(58,160,255,.20),
+transparent 50%);
+
+animation:pulse 6s infinite;
+}
+
+@keyframes pulse{
+
+0%{opacity:.4;}
+50%{opacity:1;}
+100%{opacity:.4;}
+
+}
+
+.content{
+
+position:relative;
+z-index:5;
+width:95%;
+max-width:1400px;
+
 }
 
 .logo{
+
 width:260px;
-max-width:80%;
+max-width:75%;
 margin-bottom:20px;
-filter:drop-shadow(0 0 20px rgba(0,140,255,.7));
+
+filter:
+drop-shadow(0 0 10px rgba(58,160,255,.8))
+drop-shadow(0 0 30px rgba(58,160,255,.4));
+
 }
 
 .club{
-font-size:1rem;
-letter-spacing:6px;
-color:#caa44a;
-margin-bottom:10px;
+
+font-family:Cinzel,serif;
+letter-spacing:8px;
+font-size:.95rem;
+color:var(--gold);
+
 }
 
-h1{
-font-size:clamp(2.5rem,7vw,5rem);
-margin-bottom:10px;
-text-transform:uppercase;
+.title{
+
+font-family:Cinzel,serif;
+font-weight:800;
+font-size:clamp(3rem,10vw,7rem);
+margin-top:15px;
+text-shadow:0 0 30px rgba(0,0,0,.8);
+
 }
 
-.event{
-font-size:clamp(1rem,3vw,1.5rem);
-color:#d0d0d0;
+.subtitle{
+
+font-size:clamp(1rem,3vw,1.6rem);
+letter-spacing:4px;
 margin-bottom:40px;
+opacity:.9;
+
 }
 
 .countdown{
+
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
-gap:15px;
-margin-bottom:40px;
+gap:20px;
+margin-bottom:45px;
+
 }
 
-.box{
+.card{
+
 background:rgba(255,255,255,.08);
-backdrop-filter:blur(6px);
-padding:25px;
-border-radius:12px;
-min-width:150px;
+backdrop-filter:blur(10px);
+
 border:1px solid rgba(255,255,255,.15);
+
+padding:25px;
+
+border-radius:20px;
+
+min-width:170px;
+
+box-shadow:
+0 0 20px rgba(0,0,0,.4),
+0 0 30px rgba(58,160,255,.15);
+
 }
 
 .number{
-font-size:3rem;
-font-weight:bold;
-color:#caa44a;
+
+font-size:4rem;
+font-weight:700;
+color:white;
+
 }
 
 .label{
-font-size:.9rem;
-letter-spacing:3px;
+
+letter-spacing:5px;
+color:var(--gold);
+
 }
 
 .quote{
+
 max-width:900px;
 margin:auto;
-font-size:clamp(1.1rem,2vw,1.6rem);
-font-style:italic;
+
+font-size:clamp(1.2rem,3vw,1.8rem);
+
 line-height:1.6;
-margin-bottom:35px;
+
+font-style:italic;
+
+margin-bottom:25px;
+
 }
 
 .motto{
-color:#999;
-letter-spacing:3px;
-margin-top:20px;
+
+font-family:Cinzel,serif;
+letter-spacing:4px;
+color:var(--gold);
+
+margin-bottom:40px;
+
 }
 
-.rotating{
-margin-top:40px;
-font-size:1rem;
-color:#bdbdbd;
-min-height:30px;
+.date{
+
+opacity:.6;
+letter-spacing:5px;
+
 }
 
-.finished{
-font-size:clamp(2rem,7vw,5rem);
-color:#caa44a;
-text-shadow:0 0 20px rgba(202,164,74,.7);
+.footerline{
+
+position:absolute;
+bottom:20px;
+left:0;
+right:0;
+
+font-size:.9rem;
+opacity:.5;
+
 }
 
-.finished-sub{
-margin-top:20px;
-font-size:clamp(1rem,4vw,2rem);
+#arrival{
+
+display:none;
+
+height:100vh;
+
+justify-content:center;
+align-items:center;
+
+flex-direction:column;
+
+background:
+linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95));
+
+text-align:center;
+
+}
+
+#arrival img{
+
+width:300px;
+max-width:80%;
+
+filter:
+drop-shadow(0 0 20px rgba(58,160,255,.8));
+
+}
+
+.arrive-title{
+
+font-family:Cinzel,serif;
+font-size:clamp(3rem,9vw,7rem);
+
+margin-top:30px;
+
+color:var(--gold);
+
+}
+
+.arrive-sub{
+
+font-size:clamp(1.2rem,4vw,2rem);
+
+letter-spacing:6px;
+
+margin-top:15px;
+
 }
 
 </style>
@@ -136,40 +260,42 @@ font-size:clamp(1rem,4vw,2rem);
 
 <body>
 
-<section class="hero">
+<section class="hero" id="hero">
 
-<div class="container">
+<div class="content">
 
-<img src="logo.png" class="logo" alt="Resilientes MC">
+<img src="logo.png" class="logo">
 
 <div class="club">
 RESILIENTES MC GUANAJUATO
 </div>
 
-<h1>REAL DE CATORCE</h1>
-
-<div class="event">
-14 DE NOVIEMBRE DE 2026 · 06:00 HRS
+<div class="title">
+REAL DE CATORCE
 </div>
 
-<div id="countdown" class="countdown">
+<div class="subtitle">
+RODADA 2026
+</div>
 
-<div class="box">
+<div class="countdown">
+
+<div class="card">
 <div id="days" class="number">0</div>
 <div class="label">DÍAS</div>
 </div>
 
-<div class="box">
+<div class="card">
 <div id="hours" class="number">0</div>
 <div class="label">HORAS</div>
 </div>
 
-<div class="box">
+<div class="card">
 <div id="minutes" class="number">0</div>
 <div class="label">MINUTOS</div>
 </div>
 
-<div class="box">
+<div class="card">
 <div id="seconds" class="number">0</div>
 <div class="label">SEGUNDOS</div>
 </div>
@@ -177,90 +303,74 @@ RESILIENTES MC GUANAJUATO
 </div>
 
 <div class="quote">
-"No contamos los kilómetros que faltan... contamos las historias que aún nos esperan."
+"No contamos los kilómetros que faltan...
+contamos las historias que aún nos esperan."
 </div>
 
 <div class="motto">
-FORTUNA ADIUVAT FORTES
+⚜ FORTUNA ADIUVAT FORTES ⚜
 </div>
 
-<div id="rotating" class="rotating"></div>
+<div class="date">
+14 NOVIEMBRE 2026 · 06:00 HRS
+</div>
 
+</div>
+
+<div class="footerline">
+RESILIENTES MC GUANAJUATO
+</div>
+
+</section>
+
+<section id="arrival">
+
+<img src="logo.png">
+
+<div class="arrive-title">
+LA ESPERA TERMINÓ
+</div>
+
+<div class="arrive-sub">
+ARRANQUEN MOTORES
 </div>
 
 </section>
 
 <script>
 
-const targetDate = new Date("2026-11-14T06:00:00");
+const target =
+new Date("2026-11-14T06:00:00");
 
-function updateCountdown(){
+function update(){
 
 const now = new Date();
-const diff = targetDate - now;
+
+const diff = target - now;
 
 if(diff <= 0){
 
-document.querySelector('.container').innerHTML = `
-
-<img src="logo.png" class="logo">
-
-<div class="finished">
-LA ESPERA TERMINÓ
-</div>
-
-<div class="finished-sub">
-ARRANQUEN MOTORES
-</div>
-
-`;
+document.getElementById('hero').style.display='none';
+document.getElementById('arrival').style.display='flex';
 
 return;
-}
-
-const days = Math.floor(diff/(1000*60*60*24));
-const hours = Math.floor((diff/(1000*60*60))%24);
-const minutes = Math.floor((diff/(1000*60))%60);
-const seconds = Math.floor((diff/1000)%60);
-
-document.getElementById('days').innerText = days;
-document.getElementById('hours').innerText = hours;
-document.getElementById('minutes').innerText = minutes;
-document.getElementById('seconds').innerText = seconds;
 
 }
 
-updateCountdown();
-setInterval(updateCountdown,1000);
+const days=Math.floor(diff/(1000*60*60*24));
+const hours=Math.floor((diff/(1000*60*60))%24);
+const minutes=Math.floor((diff/(1000*60))%60);
+const seconds=Math.floor((diff/1000)%60);
 
-const phrases = [
-
-"Los kilómetros terminan. Las historias no.",
-
-"Toda carretera deja cicatrices.",
-
-"El tiempo pasa. La hermandad permanece.",
-
-"No todos los que ruedan buscan un destino.",
-
-"Las mejores rutas nunca aparecen en los mapas.",
-
-"Algunas amistades se forjan en el fuego. Otras en la carretera."
-
-];
-
-let i = 0;
-
-function rotatePhrase(){
-
-document.getElementById('rotating').innerText = phrases[i];
-
-i = (i + 1) % phrases.length;
+document.getElementById('days').textContent=days;
+document.getElementById('hours').textContent=hours;
+document.getElementById('minutes').textContent=minutes;
+document.getElementById('seconds').textContent=seconds;
 
 }
 
-rotatePhrase();
-setInterval(rotatePhrase,5000);
+update();
+setInterval(update,1000);
 
 </script>
 
