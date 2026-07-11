@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Resilientes MC Guanajuato | Real de Catorce 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Cinzel',serif;
+background:#000;
+color:white;
+overflow-x:hidden;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+
+background:
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.85)),
+url('https://images.unsplash.com/photo-1519583272095-6433daf26b6e?q=80&w=2070&auto=format&fit=crop');
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+.container{
+max-width:1200px;
+}
+
+.logo{
+width:260px;
+max-width:80%;
+margin-bottom:20px;
+filter:drop-shadow(0 0 20px rgba(0,140,255,.7));
+}
+
+.club{
+font-size:1rem;
+letter-spacing:6px;
+color:#caa44a;
+margin-bottom:10px;
+}
+
+h1{
+font-size:clamp(2.5rem,7vw,5rem);
+margin-bottom:10px;
+text-transform:uppercase;
+}
+
+.event{
+font-size:clamp(1rem,3vw,1.5rem);
+color:#d0d0d0;
+margin-bottom:40px;
+}
+
+.countdown{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+margin-bottom:40px;
+}
+
+.box{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(6px);
+padding:25px;
+border-radius:12px;
+min-width:150px;
+border:1px solid rgba(255,255,255,.15);
+}
+
+.number{
+font-size:3rem;
+font-weight:bold;
+color:#caa44a;
+}
+
+.label{
+font-size:.9rem;
+letter-spacing:3px;
+}
+
+.quote{
+max-width:900px;
+margin:auto;
+font-size:clamp(1.1rem,2vw,1.6rem);
+font-style:italic;
+line-height:1.6;
+margin-bottom:35px;
+}
+
+.motto{
+color:#999;
+letter-spacing:3px;
+margin-top:20px;
+}
+
+.rotating{
+margin-top:40px;
+font-size:1rem;
+color:#bdbdbd;
+min-height:30px;
+}
+
+.finished{
+font-size:clamp(2rem,7vw,5rem);
+color:#caa44a;
+text-shadow:0 0 20px rgba(202,164,74,.7);
+}
+
+.finished-sub{
+margin-top:20px;
+font-size:clamp(1rem,4vw,2rem);
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="container">
+
+<img src="logo.png" class="logo" alt="Resilientes MC">
+
+<div class="club">
+RESILIENTES MC GUANAJUATO
+</div>
+
+<h1>REAL DE CATORCE</h1>
+
+<div class="event">
+14 DE NOVIEMBRE DE 2026 · 06:00 HRS
+</div>
+
+<div id="countdown" class="countdown">
+
+<div class="box">
+<div id="days" class="number">0</div>
+<div class="label">DÍAS</div>
+</div>
+
+<div class="box">
+<div id="hours" class="number">0</div>
+<div class="label">HORAS</div>
+</div>
+
+<div class="box">
+<div id="minutes" class="number">0</div>
+<div class="label">MINUTOS</div>
+</div>
+
+<div class="box">
+<div id="seconds" class="number">0</div>
+<div class="label">SEGUNDOS</div>
+</div>
+
+</div>
+
+<div class="quote">
+"No contamos los kilómetros que faltan... contamos las historias que aún nos esperan."
+</div>
+
+<div class="motto">
+FORTUNA ADIUVAT FORTES
+</div>
+
+<div id="rotating" class="rotating"></div>
+
+</div>
+
+</section>
+
+<script>
+
+const targetDate = new Date("2026-11-14T06:00:00");
+
+function updateCountdown(){
+
+const now = new Date();
+const diff = targetDate - now;
+
+if(diff <= 0){
+
+document.querySelector('.container').innerHTML = `
+
+<img src="logo.png" class="logo">
+
+<div class="finished">
+LA ESPERA TERMINÓ
+</div>
+
+<div class="finished-sub">
+ARRANQUEN MOTORES
+</div>
+
+`;
+
+return;
+}
+
+const days = Math.floor(diff/(1000*60*60*24));
+const hours = Math.floor((diff/(1000*60*60))%24);
+const minutes = Math.floor((diff/(1000*60))%60);
+const seconds = Math.floor((diff/1000)%60);
+
+document.getElementById('days').innerText = days;
+document.getElementById('hours').innerText = hours;
+document.getElementById('minutes').innerText = minutes;
+document.getElementById('seconds').innerText = seconds;
+
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+const phrases = [
+
+"Los kilómetros terminan. Las historias no.",
+
+"Toda carretera deja cicatrices.",
+
+"El tiempo pasa. La hermandad permanece.",
+
+"No todos los que ruedan buscan un destino.",
+
+"Las mejores rutas nunca aparecen en los mapas.",
+
+"Algunas amistades se forjan en el fuego. Otras en la carretera."
+
+];
+
+let i = 0;
+
+function rotatePhrase(){
+
+document.getElementById('rotating').innerText = phrases[i];
+
+i = (i + 1) % phrases.length;
+
+}
+
+rotatePhrase();
+setInterval(rotatePhrase,5000);
+
+</script>
+
+</body>
+</html>
